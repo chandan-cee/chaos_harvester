@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Chaos Harvester{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #B3C6FF, #E0E9FF); /* Soft blue gradient */
+      background-attachment: fixed; /* Fixes the background during scrolling */
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.9); /* Semi-transparent white for card */
+      backdrop-filter: blur(10px); /* Subtle blur effect */
+    }
+    .view-all-btn {
+    display: inline-block;
+    background-color: #0fb8ebd3; /* Bootstrap blue */
+    color: white;
+    padding: 10px 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+  }
+
+  .view-all-btn:hover {
+    background-color: #0056b3;
+  }
+   
+  </style>
+</head>
+<body class="min-h-screen font-sans text-gray-800">
+  <div class="max-w-3xl mx-auto py-10 px-4">
+    <div class="card shadow-lg rounded-xl p-8">
+      {% block content %}
+      {% endblock %}
+      <br>
+    
+
+      <!-- <a href="{% url 'all_feedback' %}">View All Feedback</a>  -->
+      <a href="{% url 'all_feedback' %}" class="view-all-btn">View All Reviews</a>
+
+
+    </div>
+  </div>
+</body>
+</html>
+

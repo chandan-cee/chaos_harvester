@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All Feedback</title>
+    <style>
+      body {
+        font-family: Arial;
+        background-color: #f9f9f9;
+      }
+      .feedback-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        padding: 20px;
+        max-width: 800px;
+        position: relative;
+        border-left: 6px solid #4CAF50; /* default green */
+      }
+      .feedback-card.needs-attention {
+        border-left: 6px solid #e53935; /* red for attention */
+        background-color: #fff5f5;
+      }
+      .timestamp {
+        font-size: 0.9em;
+        color: gray;
+      }
+      .section-title {
+        font-weight: bold;
+        margin-top: 10px;
+      }
+      .attention-badge {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        background: #e53935;
+        color: white;
+        padding: 5px 10px;
+        font-size: 0.8em;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center">All Feedback Reviews</h1>
+
+    {% for fb in feedback_list %}
+    <div class="feedback-card {% if fb.needs_attention %}needs-attention{% endif %}">
+      {% if fb.needs_attention %}
+        <div class="attention-badge">Needs Attention</div>
+      {% endif %}
+
+      <div class="timestamp">Submitted on: {{ fb.submitted_At }}</div>
+
+      <div class="section-title">User Name:</div>
+      <p>{{ fb.user_name }}</p>
+
+      <div class="section-title">Email:</div>
+      <p>{{ fb.email }}</p>
+
+      <div class="section-title">Message:</div>
+      <p>{{ fb.message }}</p>
+
+      <div class="section-title">GPT Review:</div>
+      <p style="white-space: pre-line;">{{ fb.gpt_review }}</p>
+    </div>
+    {% empty %}
+    <p style="text-align: center">No feedback available yet.</p>
+    {% endfor %}
+  </body>
+</html>
