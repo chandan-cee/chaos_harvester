@@ -1,11 +1,12 @@
-import openai
 from openai import OpenAI
 from django.conf import settings
 
+print("🔐 Loaded OpenAI key:", settings.OPENAI_API_KEY)
+
 
 # client = OpenAI(api_key= settings.OPENAI_API_KEY)
-client= OpenAI(api_key= "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", 
-               base_url="https://openrouter.ai/api/v1")
+client = OpenAI(api_key=settings.OPENAI_API_KEY, base_url="https://openrouter.ai/api/v1")
+
 
 def analyze_feedback(feedback_text):
 
@@ -23,3 +24,5 @@ def analyze_feedback(feedback_text):
         # temperature=0.7
     )
     return completion.choices[0].message.content
+
+

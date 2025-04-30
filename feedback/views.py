@@ -2,6 +2,14 @@ from django.shortcuts import render, redirect
 from .forms import FeedbackForm
 from .gpt_utils import analyze_feedback
 from .models import Feedback
+from dotenv import load_dotenv
+
+import openai
+import os
+from django.conf import settings
+openai.api_key = settings.OPENAI_API_KEY
+
+
 # Create your views here.
 
 
